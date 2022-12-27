@@ -8,14 +8,14 @@ pipeline{
         }
         stage('build and push image to ecr'){
             steps{
-                sh '''docker build -t sgecr .
-                docker tag sgecr:latest 931487333316.dkr.ecr.us-east-1.amazonaws.com/sgecr:latest
-                docker push 931487333316.dkr.ecr.us-east-1.amazonaws.com/sgecr:latest'''
+                sh '''docker build -t as .
+                docker tag sgecr:latest 630582687244.dkr.ecr.us-west-2.amazonaws.com/as:latest
+                docker push 630582687244.dkr.ecr.us-west-2.amazonaws.com/as:latest'''
             }
         }
         stage('run container'){
             steps{
-                sh '''docker run -d -p 8080:8080 931487333316.dkr.ecr.us-east-1.amazonaws.com/sgecr:latest'''
+                sh '''docker run -d -p 8080:8080 630582687244.dkr.ecr.us-west-2.amazonaws.com/as:latest'''
             }
         }
 }
