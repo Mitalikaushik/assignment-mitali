@@ -1,5 +1,5 @@
 pipeline{
-    agent {'any'}
+    agent {label 'App'}
     stages{
         stage('checkout'){
             steps{
@@ -9,7 +9,7 @@ pipeline{
         stage('build and push image to ecr'){
             steps{
                 sh '''docker build -t as .
-                docker tag sgecr:latest 630582687244.dkr.ecr.us-west-2.amazonaws.com/as:latest
+                docker tag as:latest 630582687244.dkr.ecr.us-west-2.amazonaws.com/as:latest
                 docker push 630582687244.dkr.ecr.us-west-2.amazonaws.com/as:latest'''
             }
         }
