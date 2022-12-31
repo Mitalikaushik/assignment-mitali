@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage('checkout'){
             steps{
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Mitalikaushik/assignment-mitali.git']]])
+                git 'https://github.com/Mitalikaushik/assignment-mitali.git'
             }
         }
         stage('build and push image to ecr'){
